@@ -1,8 +1,8 @@
 package org.example;
 public class App {
     public static void main(String[] args) {
-        JdbcTask jdbcTask = new JdbcTask();
-        jdbcTask.getPersons();
-        jdbcTask.updateBanks();
+        HibernateTask hibernateTask = new HibernateTask();
+        hibernateTask.getPersons();
+        hibernateTask.updateBanks();
     }
 }
