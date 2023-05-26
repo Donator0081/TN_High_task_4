@@ -37,14 +37,19 @@ public class JdbcTask {
             ResultSet resultSet = selectPS.executeQuery();
             resultSet.next();
             int count = resultSet.getInt("count");
-            for (int i = 1; i <= count; i++) {
-                updatePS.setString(1, "Bank" + i);
-                updatePS.setInt(2, i);
-                updatePS.executeUpdate();
-            }
+            updateBankName(updatePS, count);
             connection.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        System.out.println("Banks had been updated");
+    }
+
+    private static void updateBankName(PreparedStatement updatePS, int count) throws SQLException {
+        for (int i = 1; i <= count; i++) {
+            updatePS.setString(1, "Bank" + i);
+            updatePS.setInt(2, i);
+            updatePS.executeUpdate();
         }
     }
 }
