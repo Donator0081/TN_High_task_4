@@ -27,13 +27,18 @@ public class JdbcTask {
 
     public void updateBanks() {
         String updateName = "UPDATE high_task.bank SET name = ? where id = ?";
+        String selectBanks = "SELECT COUNT(*) as count FROM high_task.bank ";
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(updateName)) {
+             PreparedStatement updatePS = connection.prepareStatement(updateName);
+             PreparedStatement selectPS = connection.prepareStatement(selectBanks)) {
             connection.setAutoCommit(false);
-            for (int i = 1; i <= 4; i++) {
-                statement.setString(1, "Bank" + i);
-                statement.setInt(2, i);
-                statement.executeUpdate();
+            ResultSet resultSet = selectPS.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt("count");;
+            for (int i = 1; i <= count; i++) {
+                updatePS.setString(1, "Bank" + i);
+                updatePS.setInt(2, i);
+                updatePS.executeUpdate();
             }
             connection.commit();
         } catch (SQLException e) {
