@@ -3,10 +3,12 @@ package org.example.services;
 import org.example.entities.Person;
 import org.example.repositories.PersonRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class PersonService {
 
     private final PersonRepo personRepo;

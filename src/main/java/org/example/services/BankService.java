@@ -3,10 +3,12 @@ package org.example.services;
 import org.example.entities.Bank;
 import org.example.repositories.BankRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class BankService {
 
     private final BankRepo bankRepo;
@@ -15,6 +17,7 @@ public class BankService {
         this.bankRepo = bankRepo;
     }
 
+    @Transactional
     public void updateBanksName() {
         List<Bank> banks = bankRepo.findAll();
         updateBankName(banks);
