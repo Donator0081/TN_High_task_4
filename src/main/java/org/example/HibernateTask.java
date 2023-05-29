@@ -12,8 +12,8 @@ public class HibernateTask {
     public void getPersons() {
         try (Session session = config.getSessionFactory().openSession()) {
             session.beginTransaction();
-            List<Person> result = session.createQuery("from Person", Person.class).list();
-            result.forEach(p -> System.out.println("Last name: " + p.getFullName().split(" ")[0]));
+            List<Person> persons = session.createQuery("from Person", Person.class).list();
+            persons.forEach(p -> System.out.println("Last name: " + p.getFullName().split(" ")[0]));
             session.getTransaction().commit();
         }
     }
