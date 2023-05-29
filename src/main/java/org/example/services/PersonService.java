@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class PersonService {
-
     private final PersonRepo personRepo;
 
     public PersonService(PersonRepo personRepo) {
