@@ -1,8 +1,11 @@
 package org.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        HibernateTask hibernateTask = new HibernateTask();
-        hibernateTask.getPersons();
-        hibernateTask.updateBanks();
+        SpringApplication.run(App.class);
     }
 }
