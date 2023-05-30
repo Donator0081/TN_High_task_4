@@ -8,7 +8,7 @@ import java.util.Properties;
 public class JdbcConfig {
     public static Connection createConnection() {
         final String url =
-                "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres";
+                "jdbc:postgresql://localhost:5432/postgres";
         Properties props = new Properties();
         props.setProperty("user", "postgres");
         props.setProperty("password", "postgres");
