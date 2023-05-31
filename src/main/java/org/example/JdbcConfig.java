@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class JdbcConfig {
+
     public static Connection createConnection() {
-        final String url =
-                "jdbc:postgresql://localhost:5432/postgres";
-        Properties props = new Properties();
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        var props = new Properties();
         props.setProperty("user", "postgres");
         props.setProperty("password", "postgres");
         try {

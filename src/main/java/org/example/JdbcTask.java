@@ -13,8 +13,8 @@ public class JdbcTask {
     private final Connection connection = JdbcConfig.createConnection();
 
     public void getPersons() {
-        try (PreparedStatement statement = connection.prepareStatement(SELECT_FROM_PERSON)) {
-            ResultSet resultSet = statement.executeQuery();
+        try (var statement = connection.prepareStatement(SELECT_FROM_PERSON)) {
+            var resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String lastName = resultSet.getString("full_name").split(" ")[0];
                 System.out.println("Person with id "
@@ -28,8 +28,8 @@ public class JdbcTask {
     }
 
     public void updateBanks() {
-        try (PreparedStatement updatePS = connection.prepareStatement(UPDATE_BANK_NAME);
-             PreparedStatement selectPS = connection.prepareStatement(SELECT_COUNT_BANK)) {
+        try (var updatePS = connection.prepareStatement(UPDATE_BANK_NAME);
+             var selectPS = connection.prepareStatement(SELECT_COUNT_BANK)) {
             connection.setAutoCommit(false);
             ResultSet resultSet = selectPS.executeQuery();
             resultSet.next();
