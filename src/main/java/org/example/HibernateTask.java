@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class HibernateTask {
+
     private final HibernateConfig config = new HibernateConfig();
 
     public void getPersons() {
