@@ -1,5 +1,6 @@
 package org.example.services;
 
+import lombok.RequiredArgsConstructor;
 import org.example.entities.Person;
 import org.example.repositories.PersonRepo;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,10 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class PersonService {
 
     private final PersonRepo personRepo;
-
-    public PersonService(PersonRepo personRepo) {
-        this.personRepo = personRepo;
-    }
 
     public List<Person> getPersons() {
         return personRepo.findAll();

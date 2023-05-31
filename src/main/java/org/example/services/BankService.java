@@ -1,5 +1,6 @@
 package org.example.services;
 
+import lombok.RequiredArgsConstructor;
 import org.example.entities.Bank;
 import org.example.repositories.BankRepo;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,10 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class BankService {
 
     private final BankRepo bankRepo;
-
-    public BankService(BankRepo bankRepo) {
-        this.bankRepo = bankRepo;
-    }
 
     @Transactional
     public void updateBanksName() {
